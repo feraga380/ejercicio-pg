@@ -21,4 +21,37 @@ class Categorias extends CI_Controller {
 		$this->load->view('layouts/footer');
 
 	}
+
+	public function add()
+	{
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view('admin/categorias/add');
+		$this->load->view('layouts/footer');
+
+	}
+
+	public function store()
+	{
+		$nombre = $this->input->post("nombre");
+		$descripcion = $this->input->post("descripcion");
+
+		//echo  $nombre." ".$descripcion;
+
+		 $data = array(
+        		'nombre' => $nombre,
+        		'descripcion' => $descripcion,
+        		'estado' => "1"
+    		);
+
+		 if($this->Categorias_model->save($data)){
+		 		redirect(base_url()."mantenimiento/categorias");
+		 }
+		 else{
+		 		$this->session->set_flashdata("error","No se guardo");
+				redirect(base_url()."mantenimiento/categorias/add");
+		 }
+
+	}
+
 }

@@ -15,7 +15,7 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="#" class="btn btn-primary btn-flat">
+                        <a href="<?php echo base_url();?>mantenimiento\categorias\add" class="btn btn-primary btn-flat">
                             <span class="fa fa-plus"></span> Agregar Categoria </a>
                     </div>
                 </div>
