@@ -54,4 +54,41 @@ class Categorias extends CI_Controller {
 
 	}
 
+
+	public function edit($id)
+	{
+
+		$data = array(
+			'categoria'=> $this->Categorias_model->getCategoria($id), 
+		);	
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view('admin/categorias/edit',$data);
+		$this->load->view('layouts/footer');
+
+	}
+
+
+	public function update()
+	{
+		$idcategoria = $this->input->post("idcategoria");
+		$nombre = $this->input->post("nombre");
+		$descripcion = $this->input->post("descripcion");
+		//echo  $nombre." ".$descripcion;
+		 $data = array(
+        		'nombre' => $nombre,
+        		'descripcion' => $descripcion,
+    		);
+
+		 if($this->Categorias_model->update($idcategoria, $data)){
+		 		redirect(base_url()."mantenimiento/categorias");
+		 }
+		 else{
+		 		$this->session->set_flashdata("error","No se actualizo");
+				redirect(base_url()."mantenimiento/categorias/edit/".$idcategoria);
+		 }
+
+	}
+
+
 }
