@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Log in</title>
+  <title> login </title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   
@@ -31,7 +31,7 @@
                   <p><?php echo $this->session->flashdata("error"); ?></p>    
                 </div>
             <?php endif; ?>
-            <form action="<?php echo base_url(); ?>/auth/login" method="post">
+            <form action="<?php echo base_url();?>index.php/auth/login" method="post">
                 <div class="form-group has-feedback">
                     <input type="text" class="form-control" placeholder="Usuario" name="username">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>

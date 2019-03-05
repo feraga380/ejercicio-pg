@@ -70,27 +70,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-$active_group = 'default';
-$query_builder = TRUE;
+$direccion = $_SERVER["SERVER_NAME"];	
+if(stristr($direccion,'galileo')){
+	$base="escolar";
+    $usuario="jcarlos";        	
+    $host_db='132.248.123.56';
+    $port_db='4001';
+    $pase='ced566012a49f76eb2a0f37074735024';
+}else{
+	$base="dbventa";
+	$usuario="uventa";
+	$host_db='132.248.60.204';
+	$port_db='5432';
+	$pase='v3nt@5'; 
+}
 
-$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'uventas',
-	'password' => 'flaquit1',
-	'database' => 'ventas_ci',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
+$active_group = "default";
+$active_record = TRUE;
+
+$db['default']['hostname'] = $host_db;
+$db['default']['username'] = $usuario;
+$db['default']['password'] = $pase;
+$db['default']['database'] = $base;
+$db['default']['port'] = $port_db;
+$db['default']['dbdriver'] = "postgre";
+$db['default']['dbprefix'] = "";
+$db['default']['pconnect'] = TRUE;
+$db['default']['db_debug'] = TRUE;
+$db['default']['cache_on'] = FALSE;
+$db['default']['cachedir'] = "";
+$db['default']['char_set'] = "utf8";
+$db['default']['dbcollat'] = "utf8_general_ci";
+$db['default']['swap_pre'] = '';
+$db['default']['autoinit'] = TRUE;
+$db['default']['stricton'] = FALSE;
+
